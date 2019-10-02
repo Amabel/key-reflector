@@ -7,8 +7,8 @@
   "unpkg": "dist/umd/key-reflector.min.js",
   "scripts": {
     "start": "babel-node src/index.js --presets @babel/preset-env",
-    "lint": "eslint src/**/*.js npm run prettier:check",
-    "lint:fix": "npm run prettier",
+    "lint": "eslint src/**/*.js && npm run prettier:check",
+    "lint:fix": "eslint src/**/*.js --fix && npm run prettier",
     "prettier": "prettier --write \"src/**/*.js\"",
     "prettier:check": "prettier --check \"src/**/*.js\"",
     "build": "npm run clean && rollup -c",
