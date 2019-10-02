@@ -7,8 +7,10 @@
   "unpkg": "dist/umd/key-reflector.min.js",
   "scripts": {
     "start": "babel-node src/index.js --presets @babel/preset-env",
-    "lint": "standard *.js src/**/*.js src/*.js",
-    "lint:fix": "standard *.js src/**/*.js src/*.js --fix",
+    "lint": "eslint src/**/*.js npm run prettier:check",
+    "lint:fix": "npm run prettier",
+    "prettier": "prettier --write \"src/**/*.js\"",
+    "prettier:check": "prettier --check \"src/**/*.js\"",
     "build": "npm run clean && rollup -c",
     "clean": "rimraf dist coverage",
     "test": "jest --coverage"
@@ -32,11 +34,6 @@
       "pre-commit": "lint-staged"
     }
   },
-  "standard": {
-    "env": [
-      "jest"
-    ]
-  },
   "jest": {
     "setupFilesAfterEnv": [
       "./test/setup.js"
@@ -44,15 +41,13 @@
   },
   "lint-staged": {
     "src/index.js": [
-      "standard  --fix",
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ],
     "src/**/*.js": [
-      "standard --fix",
-      "git add"
-    ],
-    "src/**/*.{scss,css,html}": [
-      "stylelint --fix",
+      "prettier --write",
+      "eslint --fix",
       "git add"
     ]
   },
@@ -62,26 +57,21 @@
     "@babel/node": "^7.5.0",
     "@babel/plugin-transform-runtime": "^7.5.0",
     "@babel/preset-env": "^7.5.0",
+    "babel-eslint": "^10.0.3",
     "change-case": "^3.1.0",
     "create-banner": "^1.0.0",
-    "cssnano": "^4.1.10",
+    "eslint": "^6.5.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.3.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
     "lint-staged": "^9.1.0",
-    "postcss-cli": "^6.1.2",
-    "postcss-header": "^1.0.0",
-    "postcss-import": "^12.0.1",
-    "postcss-preset-env": "^6.6.0",
-    "postcss-url": "^8.0.0",
-    "precss": "^4.0.0",
+    "prettier": "^1.18.2",
     "rollup": "^1.16.6",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1",
-    "standard": "^12.0.1",
-    "stylelint": "^10.1.0",
-    "stylelint-config-standard": "^18.3.0",
     "uglify-js": "^3.6.0"
   },
   "dependencies": {
