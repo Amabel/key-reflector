@@ -1,22 +1,15 @@
 {
-  "name": "npm-package-seed",
-  "version": "1.0.0",
-  "description": "The description of your npm package.",
-  "main": "dist/umd/npm-package-seed.js",
-  "module": "dist/esm/npm-package-seed.js",
-  "unpkg": "dist/umd/npm-package-seed.min.js",
+  "name": "key-reflector",
+  "version": "0.0.1",
+  "description": "Create object with the same key name and value.",
+  "main": "dist/umd/key-reflector.js",
+  "module": "dist/esm/key-reflector.js",
+  "unpkg": "dist/umd/key-reflector.min.js",
   "scripts": {
     "start": "babel-node src/index.js --presets @babel/preset-env",
-    "lint": "npm run lint:css && npm run lint:js",
-    "lint:css": "stylelint src/**/*.{scss,css,html}",
-    "lint:js": "standard *.js src/**/*.js src/*.js",
-    "lint:fix": "npm run lint:css:fix && npm run lint:js:fix",
-    "lint:css:fix": "stylelint src/**/*.{scss,css,html} --fix",
-    "lint:js:fix": "standard *.js src/**/*.js src/*.js --fix",
-    "build": "npm run clean && npm run build:css && npm run build:js && npm run compress:css",
-    "build:css": "postcss src/styles/index.scss -o dist/npm-package-seed.css --no-map",
-    "compress:css": "postcss dist/npm-package-seed.css -u cssnano -o dist/npm-package-seed.min.css --no-map",
-    "build:js": "rollup -c",
+    "lint": "standard *.js src/**/*.js src/*.js",
+    "lint:fix": "standard *.js src/**/*.js src/*.js --fix",
+    "build": "npm run clean && rollup -c",
     "clean": "rimraf dist coverage",
     "test": "jest --coverage"
   },
@@ -26,10 +19,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amabel/npm-package-seed"
+    "url": "git+https://github.com/Amabel/key-reflector"
   },
   "author": "Amabel",
-  "homepage": "https://github.com/Amabel/npm-package-seed",
+  "homepage": "https://github.com/Amabel/key-reflector",
   "license": "MIT",
   "files": [
     "dist"
@@ -40,7 +33,9 @@
     }
   },
   "standard": {
-    "env": [ "jest" ]
+    "env": [
+      "jest"
+    ]
   },
   "jest": {
     "setupFilesAfterEnv": [
