@@ -1,0 +1,66 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8.10
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run:
+          name: Install dependencies
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: Lint
+          command: npm run lint
+
+      - run:
+          name: Test
+          command: npm run test
+
+      - run:
+          name: Build
+          command: npm run build
+
+      - run:
+          name: Authenticate with registry
+          command: |
+            if [[ "${CIRCLE_TAG}" == "v"* ]]; then
+              echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+            fi
+      - run:
+          name: Publish package
+          command: |
+            if [[ "${CIRCLE_TAG}" == "v"* ]]; then
+              npm publish
+            fi
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /^v\d+.\d+.\d+$/

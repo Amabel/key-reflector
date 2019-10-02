@@ -1,0 +1,95 @@
+{
+  "name": "npm-package-seed",
+  "version": "1.0.0",
+  "description": "The description of your npm package.",
+  "main": "dist/umd/npm-package-seed.js",
+  "module": "dist/esm/npm-package-seed.js",
+  "unpkg": "dist/umd/npm-package-seed.min.js",
+  "scripts": {
+    "start": "babel-node src/index.js --presets @babel/preset-env",
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint src/**/*.{scss,css,html}",
+    "lint:js": "standard *.js src/**/*.js src/*.js",
+    "lint:fix": "npm run lint:css:fix && npm run lint:js:fix",
+    "lint:css:fix": "stylelint src/**/*.{scss,css,html} --fix",
+    "lint:js:fix": "standard *.js src/**/*.js src/*.js --fix",
+    "build": "npm run clean && npm run build:css && npm run build:js && npm run compress:css",
+    "build:css": "postcss src/styles/index.scss -o dist/npm-package-seed.css --no-map",
+    "compress:css": "postcss dist/npm-package-seed.css -u cssnano -o dist/npm-package-seed.min.css --no-map",
+    "build:js": "rollup -c",
+    "clean": "rimraf dist coverage",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "template",
+    "node package template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amabel/npm-package-seed"
+  },
+  "author": "Amabel",
+  "homepage": "https://github.com/Amabel/npm-package-seed",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "standard": {
+    "env": [ "jest" ]
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./test/setup.js"
+    ]
+  },
+  "lint-staged": {
+    "src/index.js": [
+      "standard  --fix",
+      "git add"
+    ],
+    "src/**/*.js": [
+      "standard --fix",
+      "git add"
+    ],
+    "src/**/*.{scss,css,html}": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/node": "^7.5.0",
+    "@babel/plugin-transform-runtime": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "change-case": "^3.1.0",
+    "create-banner": "^1.0.0",
+    "cssnano": "^4.1.10",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.1.0",
+    "postcss-cli": "^6.1.2",
+    "postcss-header": "^1.0.0",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.6.0",
+    "postcss-url": "^8.0.0",
+    "precss": "^4.0.0",
+    "rollup": "^1.16.6",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.1.1",
+    "standard": "^12.0.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0",
+    "uglify-js": "^3.6.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.5.4"
+  }
+}
