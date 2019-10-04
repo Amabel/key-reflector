@@ -1,19 +1,23 @@
 import { defaultOptions } from './options'
 import { isPlainObject } from './utils'
 
-export const reflectKeys = (keys = [], inputOptions = {}) => {
-  let options = defaultOptions
+class KeyReflector {
+  static reflectKeys(keys = [], inputOptions = {}) {
+    let options = defaultOptions
 
-  if (isPlainObject(inputOptions)) {
-    options = { ...options, ...inputOptions }
+    if (isPlainObject(inputOptions)) {
+      options = { ...options, ...inputOptions }
+    }
+
+    const obj = {}
+    const prefix = options.valuePrefix
+
+    keys.forEach(key => {
+      obj[key] = `${prefix}${key}`
+    })
+
+    return obj
   }
-
-  const obj = {}
-  const prefix = options.valuePrefix
-
-  keys.forEach(key => {
-    obj[key] = `${prefix}${key}`
-  })
-
-  return obj
 }
+
+export default KeyReflector

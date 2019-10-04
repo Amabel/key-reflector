@@ -1,3 +1,3 @@
-import { reflectKeys as _reflectKeys } from './key-reflector'
+import KeyReflector from './key-reflector'
 
-export const reflectKeys = _reflectKeys
+export default KeyReflector

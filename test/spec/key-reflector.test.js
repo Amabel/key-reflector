@@ -1,4 +1,4 @@
-import { reflectKeys } from '../../src/'
+import KeyReflector from '../../src/'
 
 describe('reflectKeys()', () => {
   context('with default options', () => {
@@ -9,12 +9,12 @@ describe('reflectKeys()', () => {
         KEY_TWO: 'KEY_TWO',
         KEY_THREE: 'KEY_THREE',
       }
-      expect(reflectKeys(keys)).toEqual(expected)
+      expect(KeyReflector.reflectKeys(keys)).toEqual(expected)
     })
 
     it('returns an empty object when keys are not provided', () => {
       const expected = {}
-      expect(reflectKeys()).toEqual(expected)
+      expect(KeyReflector.reflectKeys()).toEqual(expected)
     })
   })
 
@@ -27,7 +27,7 @@ describe('reflectKeys()', () => {
         KEY_TWO: 'PREFIX_KEY_TWO',
         KEY_THREE: 'PREFIX_KEY_THREE',
       }
-      expect(reflectKeys(keys, options)).toEqual(expected)
+      expect(KeyReflector.reflectKeys(keys, options)).toEqual(expected)
     })
   })
 
@@ -40,7 +40,7 @@ describe('reflectKeys()', () => {
         KEY_TWO: 'KEY_TWO',
         KEY_THREE: 'KEY_THREE',
       }
-      expect(reflectKeys(keys, options)).toEqual(expected)
+      expect(KeyReflector.reflectKeys(keys, options)).toEqual(expected)
     })
   })
 })
