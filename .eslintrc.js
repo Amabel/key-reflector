@@ -8,9 +8,9 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
+  parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module',
-    parser: 'babel-eslint',
     ecmaVersion: 2015,
   },
 }
