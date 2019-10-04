@@ -1,9 +1,3 @@
-export const reflectKeys = (keys = [], prefix = '') => {
-  const obj = {}
+import { reflectKeys as _reflectKeys } from './key-reflector'
 
-  keys.forEach(key => {
-    const value = `${prefix}${key}`
-    obj[key] = value
-  })
-  return obj
-}
+export const reflectKeys = _reflectKeys
