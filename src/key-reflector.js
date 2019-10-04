@@ -1,4 +1,4 @@
-import changeCase from 'change-case'
+import * as changeCase from 'change-case'
 import { defaultOptions } from './options'
 import { isPlainObject } from './utils'
 
