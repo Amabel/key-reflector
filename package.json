@@ -1,6 +1,6 @@
 {
   "name": "key-reflector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create object with the same key name and value.",
   "main": "dist/umd/key-reflector.js",
   "module": "dist/esm/key-reflector.js",
