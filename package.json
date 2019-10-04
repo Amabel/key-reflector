@@ -61,7 +61,6 @@
     "change-case": "^3.1.0",
     "create-banner": "^1.0.0",
     "eslint": "^6.5.1",
-    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.3.0",
     "husky": "^3.0.0",
     "jest": "^24.8.0",
