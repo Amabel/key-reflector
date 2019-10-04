@@ -24,6 +24,12 @@ or
 yarn add key-reflector
 ```
 
+CDN:
+
+```html
+<script src="https://unpkg.com/key-reflector/dist/umd/key-reflector.min.js"></script>
+```
+
 ## Usage
 
 ### Basic
