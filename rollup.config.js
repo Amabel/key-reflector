@@ -1,4 +1,3 @@
-import babel from 'rollup-plugin-babel'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 import changeCase from 'change-case'
@@ -9,12 +8,6 @@ const banner = require('./shared/banner')
 const name = changeCase.pascalCase(pkg.name)
 const input = 'src/index.js'
 
-const getBabelOptions = ({ useESModules }) => ({
-  exclude: /node_modules/,
-  runtimeHelpers: true,
-  plugins: [['@babel/transform-runtime', { useESModules }]]
-})
-
 export default [
   {
     input,
@@ -22,9 +15,9 @@ export default [
       banner,
       name,
       file: pkg.main,
-      format: 'umd'
+      format: 'umd',
     },
-    plugins: [babel(getBabelOptions({ useESModules: true })), nodeResolve()]
+    plugins: [nodeResolve()],
   },
   {
     input,
@@ -32,9 +25,9 @@ export default [
       banner,
       name,
       file: pkg.unpkg,
-      format: 'umd'
+      format: 'umd',
     },
-    plugins: [babel(getBabelOptions({ useESModules: true })), nodeResolve(), terser()]
+    plugins: [nodeResolve(), terser()],
   },
   {
     input,
@@ -42,8 +35,8 @@ export default [
       banner,
       name,
       file: pkg.module,
-      format: 'esm'
+      format: 'esm',
     },
-    plugins: [babel(getBabelOptions({ useESModules: true }))]
-  }
+    plugins: [nodeResolve()],
+  },
 ]
