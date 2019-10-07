@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/circleci/build/github/Amabel/key-reflector.svg?style=for-the-badge" alt="Build">
 </a>
 <a href="#">
-  <img src="https://img.shields.io/npm/v/key-reflector.svg?style=for-the-badge" alt="npm Downloads per Month">
+  <img src="https://img.shields.io/npm/v/key-reflector.svg?style=for-the-badge&color=44cc12" alt="npm Downloads per Month">
 <a>
 
 <a href="https://github.com/Amabel/key-reflector/blob/master/LICENSE">
@@ -40,7 +40,7 @@ import KeyReflector from 'key-reflector'
 KeyReflector.reflectKeys(['FOO', 'BAR', 'BAZ'])
 ```
 
-will returns:
+returns:
 
 ```
 {
@@ -74,7 +74,7 @@ KeyReflector.reflectKeys(keys[, options])
 
 Prefix to be added to each value.
 
-Example:
+**Example:**
 
 ```javascript
 KeyReflector.reflectKeys(['FOO', 'BAR', 'BAZ'], { valuePrefix: 'PREFIX_'})
